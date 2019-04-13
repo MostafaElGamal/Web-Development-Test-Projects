@@ -1,0 +1,21 @@
+body{
+  text-align: center;
+}
+.blue{
+  background-color: blue;
+}
+.red{
+  background-color: red;
+}
+
+.col{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid black; /*this gets rid of bootstrap shadow*/
+  display: inline-block;
+}
+.row{
+  display: inline-block;
+
+}
