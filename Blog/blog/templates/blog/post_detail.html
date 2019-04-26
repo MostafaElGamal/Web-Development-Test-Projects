@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% block body_code%}
+<!-- Showing you all the data for pk element -->
+
+<div class="container">
+<style media="screen">
+  .container{
+    margin:10px 0px 20px 40px;
+    padding:10px 150px 0px 150px;
+  }
+</style>
+
+<div class="container">
+<div class="card text-center">
+  <div class="card-header">
+    <h5>{{ post_detail.author }}</h5>
+      <small>{{ post_detail.update }}</small>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ post_detail.title }}<small>{{ post_detail.timestamp|timesince }}</small></h5>
+    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+    <p class="card-text">{{ post_detail.text|linebreaks }}</p>
+    <a class="btn btn-primary" href="{% url 'post_update' pk=post_detail.pk %}">Update</a>
+    <a class="btn btn-danger" href="{% url 'post_delete' pk=post_detail.pk %}">Delete</a>
+  </div>
+  <div class="card-footer text-muted">
+    {{post.timestamp}}
+    </div>
+  </div>
+ </div>
+</div>
+
+<div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-width="" data-numposts="5"></div>
+
+
+{% endblock %}

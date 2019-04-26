@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% block body_code%}
+
+<!-- For Last Step Delete -->
+<div class="container">
+  <div class="jumbotron">
+
+    <form  method="post">
+      <h1>Want to Delete {{ post_delete.title }}</h1>
+      {% csrf_token %}
+      <input class="btn btn-danger" type="submit" name="" value="Delete">
+
+      <a class="btn btn-primary" href="{% url 'post_list' %}">Cancel</a>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

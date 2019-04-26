@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% block body_code%}
+<!-- THIS IS FOR THE LIST OF POSTES -->
+{% for post in post_list %}
+<style media="screen">
+  .container{
+    margin:10px 0px 10px 50px;
+    padding:10px 150px 0px 150px;
+  }
+</style>
+
+<div class="container">
+
+
+<div class="card text-center">
+  <div class="card-header">
+    <h5>{{post.author}}</h5>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{ post.text|linebreaks|truncatechars:40 }}</p>
+    <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">View</a>
+  </div>
+  <div class="card-footer text-muted">
+    {{post.timestamp}}
+  </div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

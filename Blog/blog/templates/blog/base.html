@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/box.css' %}">
+  </head>
+  <body>
+
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v3.2&appId=1655574704546063&autoLogAppEvents=1"></script>
+<!-- ================================================================================= -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'create_post'%}">New Post</a>
+                </li>
+                
+            </ul>
+        </div>
+
+            <a class="navbar-brand mx-auto" href="{% url 'post_list'%}">MyTech Blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  {% if user.is_authenticated %}
+                  <a class="nav-item nav-link" href="{% url 'user_logout' %}">Logout</a>
+                  {% else %}
+                  <a class="nav-item nav-link" href="{% url 'user_login' %}">Sign In</a>
+                  {% endif %}
+                </li>
+                <li class="nav-item">
+                  {% if not user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'register'%}">Sign Up</a>
+                  {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+  </body>
+  {% block body_code%}
+  {% endblock %}
+</html>

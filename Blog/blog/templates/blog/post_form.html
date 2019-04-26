@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block body_code%}
+
+<!-- THIS IS THE PLACE Create Post and Update it  -->
+<div class="container">
+  <div class="jumbotron">
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input class="btn btn-primary" type="submit" name="" value="Publish">
+     </form>
+
+  </div>
+</div>
+{% endblock %}

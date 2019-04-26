@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% block body_code%}
+
+<div class="container">
+  <div class="jumbotron">
+
+    {% if not registered %}
+    <form method="POST">
+      <h2>Sign Up</h2>
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      <input type="submit" name="" value="SigUp">
+    </form>
+    {% else %}
+    <h2>Thank you for SigUp</h2>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}
