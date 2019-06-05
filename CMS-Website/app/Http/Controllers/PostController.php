@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Http\Requests\ Post\CreatePostRequest;
-use App\Http\Requests\ Post\CreateUpdatePostRequest;
+
+
+
+use App\Http\Requests\Post\CreatePostRequest;
+use App\Http\Requests\Post\CreateUpdatePostRequest;
 use App\Category;
 use App\Post;
-
+use App\Tag;
 
 class PostController extends Controller
 {
+
+  public function __construct()
+  {
+    $this->middleware('verfiyCategoryCount')->only(['create', 'store']);
+  }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +39,7 @@ class PostController extends Controller
     {
 
       // Return fun() if thins method work will go to this page
-        return  view('post.create')->with('categories' , Category::all())   ;
+        return  view('post.create')->with('categories' , Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -41,11 +50,12 @@ class PostController extends Controller
      */
       public function store(CreatePostRequest $request)
       {
+
           // upload the image to storage
           $image = $request->image->store('posts');
 
           // create the post
-          Post::create([
+          $post = Post::create([
             'title'=>$request->title,
             'description'=>$request->description,
             'contant'=>$request->contant,
@@ -53,6 +63,10 @@ class PostController extends Controller
             'publiched_at'=>$request->publiched_at,
             'category_id'=>$request->category,
           ]);
+
+          if ($request->tags){
+            $post->tags()->attach($request->tags);
+          }
 
           // flash message
           session()->flash('success', 'The Post Published Successfully');
@@ -80,7 +94,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('post.create')->with('post', $post)->with('categories', Category::all());
+        return view('post.create')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -103,6 +117,10 @@ class PostController extends Controller
         $post ->deleteImage();
 
         $data['image'] = $image;
+      }
+
+      if($request->tags){
+        $post->tags()->sync( $request->tags );
       }
 
       // update attribute

@@ -4,14 +4,15 @@
   <div class="card card-default">
     <div class="card-header">
 
-    {{ isset($link) ?'Edit Category' : 'Create Categories' }}
+    {{ isset($link) ?'Edit Tag' : 'Create Tags' }}
 
     </div>
     <div class="card-body">
 
-    @include('partials.errors')
+      @include('partials.errors')
 
-      <form  action="{{ isset($link) ? route('categories.update', $link->id)  :  route('categories.store')  }}" method="POST">
+
+      <form  action="{{ isset($link) ? route('tags.update', $link->id)  :  route('tags.store')  }}" method="POST">
         @csrf
 
         @if( isset($link) )
@@ -24,7 +25,7 @@
 
         <div class="form-group">
           <button class="btn btn-success" type="submit" name="button">
-          {{ isset($link) ?'Save Category' : 'Add Categories'}}
+          {{ isset($link) ?'Save Tag' : 'Add tags'}}
           </button>
         </div>
 

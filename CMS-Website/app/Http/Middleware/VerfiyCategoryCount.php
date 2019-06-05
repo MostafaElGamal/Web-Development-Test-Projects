@@ -16,7 +16,9 @@ class VerfiyCategoryCount
     public function handle($request, Closure $next)
     {
         if(Category::all()->count() === 0){
-          return redirect()->back();
+
+          session()->flash('error', 'Add Category to make a new Posst');
+          return redirect( route('categories.create') );
         }
 
         return $next($request);

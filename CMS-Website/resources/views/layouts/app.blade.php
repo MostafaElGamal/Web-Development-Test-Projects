@@ -90,6 +90,14 @@
             @endif
           </div>
 
+          <div class="container">
+            @if (session()->has('error'))
+              <div class="alert alert-danger">
+                  {{ session()->get('error')}}
+              </div>
+            @endif
+          </div>
+
           @auth
             <div class="container">
 
@@ -103,6 +111,10 @@
                     </li>
                     <li class="list-group-item">
                       <a href="{{ route('categories.index') }}">Categories</a>
+                    </li>
+                    
+                    <li class="list-group-item">
+                      <a href="{{ route('tags.index') }}">Tags</a>
                     </li>
                   </ul>
 

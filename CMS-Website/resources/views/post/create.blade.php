@@ -9,17 +9,8 @@
 
   <div class="card-body">
 
-    @if( $errors->any() )
-    <div class="alert alert-danger">
-      <ul class="list-group">
-        @foreach($errors->all() as $error)
-          <li class="list-group-item text-denger">
-            {{ $error }}
-          </li>
-        @endforeach
-      </ul>
-    </div>
-    @endif
+    @include('partials.errors')
+
 
     <form action="{{ isset($post) ?route('posts.update', $post ->id) : route('posts.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
@@ -79,6 +70,29 @@
         </select>
       </div>
 
+      @if($tags->count() > 0)
+      <div class="form-group">
+        <label for="tags">Tags</label>
+
+        <select class="form-control tags-selector" name="tags[]" id="tags" multiple>
+            @foreach($tags as $tag)
+
+            <option value="{{ $tag->id }}"
+              @if(isset($post))
+                @if( $post->hashTag($tag->id) )
+
+                selected
+                @endif
+              @endif
+              >
+              {{ $tag -> name }}
+            </option>
+
+            @endforeach
+        </select>
+      </div>
+      @endif
+
       <div class="form-group">
         <input class="btn btn-success" type="submit" name="submit" value="{{ isset($post) ? 'Save' : 'Publish' }}">
       </div>
@@ -92,14 +106,20 @@
 @section('scripts')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.1/trix.js" charset="utf-8"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
   <script>
     flatpickr('#publiched_at', {
       enableTime: true
     })
+
+    $(document).ready(function() {
+    $(".tags-selector").select2();
+ })
   </script>
 @endsection
 
 @section('css')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.1/trix.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 

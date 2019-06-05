@@ -54,7 +54,7 @@
 
             @endif
             <td>
-              <form class="" action="{{ route('posts.destroy' ,$post->id) }}" method="POST">
+              <form action="{{ route('posts.destroy' ,$post->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger btn-sm" type="submit" >

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
+
 use App\http\Requests\CreateCategoryRquest;
 use App\http\Requests\CreateUpdateRequest;
 
@@ -45,7 +46,7 @@ class CategorisController extends Controller
         'name' => $request->name,
       ]);
 
-      session()->flash('success', 'Category CreatedS');
+      session()->flash('success', 'Category Created Successfuly');
 
       return redirect( route('categories.index') );
 
@@ -99,6 +100,19 @@ class CategorisController extends Controller
      */
     public function destroy(Category $category)
     {
+          // if you want to delete the category with all related posts
+          // foreach ($category->posts as $key) {
+          //   $key ->deleteImage();
+          //   $key ->forceDelete();
+          // }
+
+          if($category -> posts->count() > 0){
+
+            $count = $category->posts->count();
+            session()->flash('error', sprintf('The Category Cannot be deleted becouse There is %s  posts', $count));
+
+            return redirect()->back();
+          }
 
           $category ->delete();
 
