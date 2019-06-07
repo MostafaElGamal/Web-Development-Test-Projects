@@ -12,7 +12,7 @@
     @include('partials.errors')
 
 
-    <form action="{{ isset($post) ?route('posts.update', $post ->id) : route('posts.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ isset($post) ?route('posts.update', $post ->id) : route('posts.store') }}"   method="POST" enctype="multipart/form-data">
       @csrf
       @if(isset($post))
         @method('PUT')
@@ -43,7 +43,7 @@
 
       @if(isset($post))
         <div class="form-group">
-          <img src="{{ asset($post->image) }}" alt="" style="width:100%">
+          <img src="http://127.0.0.1:8000/storage/{{ $post->image }}" alt="NoImage" style="width:100%">
         </div>
       @endif
 

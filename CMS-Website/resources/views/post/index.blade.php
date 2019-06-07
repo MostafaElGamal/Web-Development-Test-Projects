@@ -24,7 +24,8 @@
           @foreach( $posts as $post)
           <tr>
             <td>
-              <img src="{{ asset($post->image) }}" width="120px" height="60px" alt="">
+
+              <img src="http://127.0.0.1:8000/storage/{{ $post->image }}" width="120px" height="60px" alt="There is no IMAGE">
             </td>
 
             <td>

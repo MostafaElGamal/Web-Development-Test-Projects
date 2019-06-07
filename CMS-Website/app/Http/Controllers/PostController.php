@@ -50,7 +50,6 @@ class PostController extends Controller
      */
       public function store(CreatePostRequest $request)
       {
-
           // upload the image to storage
           $image = $request->image->store('posts');
 

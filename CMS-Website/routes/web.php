@@ -10,13 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
+Route::get('/posts/{post}', 'Blog/PostsController@show')
+Route::get('/', 'WelcomeController@index');
 
 Route::middleware(['auth'])->group( function(){
 
@@ -31,5 +28,8 @@ Route::middleware(['auth'])->group( function(){
 
 Route::middleware(['auth','admin'])->group( function(){
   Route::get('users', 'UsersController@index')->name('users.index');
+  Route::post('users/{user}/make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
+  Route::get('users/profile' , 'UsersController@edit')->name('user.edit.profile');
+  Route::put('users/profile', 'UsersController@update')->name('users.update-profile');
 
 });
