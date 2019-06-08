@@ -3,8 +3,10 @@
 use App\Post;
 use App\Tag;
 use App\Category;
-use Illuminate\Database\Seeder;
+use App\User;
 
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 class PostTabeleSeeder extends Seeder
 {
     /**
@@ -14,6 +16,26 @@ class PostTabeleSeeder extends Seeder
      */
     public function run()
     {
+
+      $author1 = User::create([
+        'name' =>'Kogo',
+        'email' =>'Mustaf@gmail.com',
+        'password'=> Hash::make('password')
+      ]);
+
+      $author2 = User::create([
+        'name' =>'Mustafa',
+        'email' =>'klo@gmail.com',
+        'password'=> Hash::make('password')
+      ]);
+
+      $author3 = User::create([
+        'name' =>'Mime',
+        'email' =>'LOL@gmail.com',
+        'password'=> Hash::make('password')
+      ]);
+
+
 
         $category1 = Category::create([
           'name' => 'News'
@@ -28,14 +50,15 @@ class PostTabeleSeeder extends Seeder
 
 
 
-        $post1 = Post::create([
+        $post1 = $author1->posts()->create([
           'title' => 'We relocated our office to a new designed garage',
           'description'=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           'contant'=>'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           'category_id' => $category1->id,
           'image'=> 'posts/1.jpg'
         ]);
-        $post2 = Post::create([
+
+        $post2 = $author2->posts()->create([
           'title' => 'Top 5 brilliant content marketing strategiesWe relocated our office to a new designed garage',
           'description'=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           'contant'=>'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -43,7 +66,8 @@ class PostTabeleSeeder extends Seeder
           'image'=> 'posts/3.jpg'
 
         ]);
-        $post3 = Post::create([
+
+        $post3 = $author3->posts()->create([
           'title' => 'Congratulate and thank to Maryam for joining our team',
           'description'=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           'contant'=>'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -52,9 +76,9 @@ class PostTabeleSeeder extends Seeder
 
         ]);
 
-        $post4 = Post::create([
+        $post4 = $author1->posts()->create([
           'title' => 'Best practices for minimalist design with example',
-          'description'=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          'description'=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid unt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           'contant'=>'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           'category_id' => $category3->id,
           'image'=> 'posts/5.jpg',

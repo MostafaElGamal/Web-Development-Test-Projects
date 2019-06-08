@@ -12,7 +12,7 @@
 */
 Auth::routes();
 
-Route::get('/posts/{post}', 'Blog/PostsController@show')
+Route::get('blog/posts/{post}', 'Blog\PostsController@show')->name('blog.show');
 Route::get('/', 'WelcomeController@index');
 
 Route::middleware(['auth'])->group( function(){

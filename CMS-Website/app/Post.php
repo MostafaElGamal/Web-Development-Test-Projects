@@ -12,7 +12,7 @@ class Post extends Model
   use SoftDeletes;
 
   protected $fillable = [
-    'title','description','contant','image','category_id'
+    'title','description','contant','image','category_id', 'user_ids'
   ];
 
   /**
@@ -46,5 +46,9 @@ class Post extends Model
   {
     return in_array($tagId, $this->tags->pluck('id')->toArray() );
   }
-  
+
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 }
