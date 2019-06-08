@@ -110,6 +110,7 @@
   <script>
     flatpickr('#publiched_at', {
       enableTime: true
+      enableSeconds:true
     })
 
     $(document).ready(function() {

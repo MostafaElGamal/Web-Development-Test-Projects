@@ -10,6 +10,7 @@ class Post extends Model
 {
 
   use SoftDeletes;
+  protected $dates = ['published_at'];
 
   protected $fillable = [
     'title','description','contant','image','category_id', 'user_ids'
@@ -50,5 +51,18 @@ class Post extends Model
   public function user()
   {
     return $this->belongsTo(User::class);
+  }
+
+
+
+  public function scopeSearched($query)
+  {
+    $search = request()->query('search');
+
+    if(!$search){
+      return $query;
+    }
+
+    return $query->where('title', 'LIKE', "%{$search}%");
   }
 }

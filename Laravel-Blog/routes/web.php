@@ -13,7 +13,10 @@
 Auth::routes();
 
 Route::get('blog/posts/{post}', 'Blog\PostsController@show')->name('blog.show');
-Route::get('/', 'WelcomeController@index');
+Route::get('blog/categories/{category}', 'Blog\PostsController@category')->name('blog.category');
+Route::get('blog/categories/{tags}', 'Blog\PostsController@tags')->name('blog.tags');
+Route::get('/', 'WelcomeController@index')->name('welcome');
+
 
 Route::middleware(['auth'])->group( function(){
 
