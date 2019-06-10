@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
 
     <title>@yield('title')</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/page.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -27,8 +27,8 @@
         <div class="navbar-left">
           <button class="navbar-toggler" type="button">&#9776;</button>
           <a class="navbar-brand" href="/">
-            <img class="logo-dark" src="{{ asset('img/logo-dark.png') }}" alt="logo">
-            <img class="logo-light" src="{{ asset('img/logo-light.png') }}" alt="logo">
+            <h2 style="font-family: 'Righteous', cursive;" class="logo-dark">Laravel Blog</h2>
+            <h2 style="color:white; font-family: 'Righteous', cursive;" class="logo-light">Laravel Blog</h2>
           </a>
         </div>
 
@@ -37,7 +37,6 @@
 
           <ul class="nav nav-navbar">
             <li class="nav-item">
-              <!-- <a class="nav-link" href="#">Demos <span class="arrow"></span></a> -->
               <ul class="nav">
 
 

@@ -7,13 +7,13 @@
 
 @section('header')
 <!-- Header -->
-<header class="header text-center text-white" style="background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);">
+<header class="header text-center text-white" style="background-image: linear-gradient(-225deg, #FDFFFC -1.5%, #2EC4B6 45%, #E71D36 100%);">
   <div class="container">
 
     <div class="row">
       <div class="col-md-8 mx-auto">
 
-        <h1>Welcome To SaaS Blog</h1>
+        <h1>Welcome To Laravel Blog</h1>
         <p class="lead-2 opacity-90 mt-6">Read and get updated on how we progress</p>
 
       </div>
