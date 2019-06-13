@@ -8,6 +8,7 @@ use App\Person;
 use App\Http\Resources\PersonResource;
 use App\Http\Resources\PersonResourceCollection;
 use App\Http\Requests\StoreRequest;
+use App\Http\Requests\UpdatePersonRequest;
 
 class PersonController extends Controller
 {
@@ -37,11 +38,19 @@ class PersonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request): PersonResource
     {
 
+        $person = Person::create([
+          'first_name'=>$request->first_name,
+          'last_name'=>$request->last_name,
+          'email'=>$request->email,
+          'phone'=>$request->phone,
+          'city'=>$request->city
 
-        return new PersonResource($request);
+        ]);
+
+        return new PersonResource($person);
     }
 
     /**
@@ -74,9 +83,14 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePersonRequest $request,Person $person): PersonResource
     {
-        //
+
+
+
+        $person->update($request->all());
+
+        return new PersonResource($person);
     }
 
     /**
