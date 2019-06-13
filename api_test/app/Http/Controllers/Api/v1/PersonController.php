@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Person;
 use App\Http\Resources\PersonResource;
@@ -88,6 +89,7 @@ class PersonController extends Controller
 
 
 
+
         $person->update($request->all());
 
         return new PersonResource($person);
@@ -99,8 +101,10 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Person $person)
     {
-        //
+        $person->delete();
+
+        return Response()->json();
     }
 }
