@@ -153,9 +153,11 @@
                 </div>
 
                 <div class="form-group row mb-0">
-                        <button type="submit" class="btn btn-primary">
+                        <button style="width:100%;"type="submit" class="btn btn-primary">
                             {{ __('Login') }}
                         </button>
+
+                        <div>
 
                         @if (Route::has('password.request'))
                             <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -163,10 +165,12 @@
                             </a>
                         @endif
 
-                        @if (Route::has('register')
-                                <a class="btn btn-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            @if (Route::has('register'))
+                            <a class="btn btn-link" href="{{ route('register') }}">{{ __('Register') }}</a>
 
                         @endif
+
+                      </div>
                     </div>
             </form>
           </div>
