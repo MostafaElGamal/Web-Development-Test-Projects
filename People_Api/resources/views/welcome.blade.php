@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <a href="#">People API</a>
+                    <a href="https://github.com/MostafaElGamal/Web-Development-Projects/tree/master/People_Api">People API</a>
                 </div>
                 <div class="links">
                   <p>Check the doc in github for moro info</p>
