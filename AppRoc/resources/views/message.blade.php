@@ -1,0 +1,1 @@
+<p> Welcome We are online right now  {{ $data }}</p>
