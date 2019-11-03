@@ -11,5 +11,6 @@ var users = [
     return users.premium  == true;
  });
  
+ 
  console.log( newUsers );
  console.log( users ); 
