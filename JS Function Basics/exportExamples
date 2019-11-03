@@ -1,0 +1,16 @@
+// Normal export you can do
+export default 'hello'
+
+// you can also export an object
+export default {
+  name:'Mustafa',
+  age:24
+}
+
+// you can also multiple export an object
+var name = 'Mustfaa'
+var age = 24
+var favColour = 'green
+
+
+export { name, age, favColour }
