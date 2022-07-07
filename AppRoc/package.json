@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@vssue/api-github-v3": "^1.0.0",
-        "moment": "^2.24.0",
+        "moment": "^2.29.4",
         "vssue": "^1.0.1",
         "vue-disqus": "^3.0.5",
         "vue-router": "^3.0.6",
